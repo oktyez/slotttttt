@@ -1,0 +1,33 @@
+const fruits = ["🍒", "🍋", "🍊", "🍉", "🍇", "🍓"];
+const spinBtn = document.getElementById("spin-btn");
+const resultDiv = document.getElementById("result");
+
+spinBtn.addEventListener("click", spinSlot);
+
+function spinSlot() {
+    // Slotları rastgele doldur
+    const slot1 = document.getElementById("slot1");
+    const slot2 = document.getElementById("slot2");
+    const slot3 = document.getElementById("slot3");
+
+    const rand1 = fruits[Math.floor(Math.random() * fruits.length)];
+    const rand2 = fruits[Math.floor(Math.random() * fruits.length)];
+    const rand3 = fruits[Math.floor(Math.random() * fruits.length)];
+
+    slot1.textContent = rand1;
+    slot2.textContent = rand2;
+    slot3.textContent = rand3;
+
+    // Sonuçları kontrol et
+    checkResult(rand1, rand2, rand3);
+}
+
+function checkResult(slot1, slot2, slot3) {
+    if (slot1 === slot2 && slot2 === slot3) {
+        resultDiv.textContent = "Kazandınız!";
+        resultDiv.style.color = "green";
+    } else {
+        resultDiv.textContent = "Kaybettiniz!";
+        resultDiv.style.color = "red";
+    }
+}
